@@ -7,7 +7,7 @@ bootstrap/compiled.php
 app/storage/
 
 # Laravel 5 & Lumen specific
-config/config/services.php
+config/services.php
 public/storage
 public/hot
 storage/*.key
