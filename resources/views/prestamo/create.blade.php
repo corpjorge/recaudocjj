@@ -66,7 +66,7 @@
 				</div>
 				<div class="form-group">
 					<label for="interes">Interes</label>
-					<input type="number" class="form-control" id="interes" placeholder="%" name="interes" min="1">
+					<input type="number" class="form-control" id="interes" placeholder="%" name="interes" min="0">
 				</div>
 				<div class="form-group">
 					<label for="observaciones">Observaciones</label>

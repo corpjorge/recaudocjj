@@ -49,7 +49,7 @@ class PrestamoController extends Controller
           'prestamo' => 'required|',
           'fecha' => 'required|date',
           'cuota' => 'required|numeric|min:1|',
-          'interes' => 'required|numeric|min:1|',
+          'interes' => 'required|numeric|min:0|',
           'presupuesto' => 'required|numeric|min:1|',
       ]);
 
