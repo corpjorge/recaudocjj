@@ -46,8 +46,8 @@
 				<div class="form-group">
           <label>Presupuesto</label>
           <select class="form-control" name="presupuesto" required>
+						<option value=""></option>
 						@foreach ($presupuestos as $presupuesto)
-            <option value=""></option>
 						<option value="{{$presupuesto->id}}">{{$presupuesto->nombre}} - {{ number_format($presupuesto->valor_actual, 0, '', '.') }}</option>
 						@endforeach
           </select>
@@ -57,7 +57,7 @@
 					<input type="number" class="form-control" id="prestamo" placeholder="$" name="prestamo" min="1">
 				</div>
 				<div class="form-group">
-					<label for="fecha">Fecha primer pago</label>
+					<label for="fecha">Fecha de préstamo</label>
 					<input type="date" class="form-control" id="fecha" placeholder="fecha" name="fecha">
 				</div>
 				<div class="form-group">
