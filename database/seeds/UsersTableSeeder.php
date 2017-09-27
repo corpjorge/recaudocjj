@@ -14,9 +14,17 @@ class UsersTableSeeder extends Seeder
     {
       $user = new User();
       $user->name = "admin";
-      $user->email="admin@corpjorge.com";
+      $user->email="corpjorge@hotmail.com";
       $user->password= crypt("111111","");
       $user->rol_id=1;
       $user->save();
+
+      $user = new User();
+      $user->name = "Juan Carlos";
+      $user->email="instelbo@gmail.com";
+      $user->password= crypt("111111","");
+      $user->rol_id=1;
+      $user->save();
+
     }
 }
