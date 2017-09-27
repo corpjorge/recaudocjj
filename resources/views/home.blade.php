@@ -29,10 +29,10 @@
            <span class="info-box-number">{{ number_format($presupuesSuma, 0, '', '.')}}</span>
 
            <div class="progress">
-             <div class="progress-bar" style="width:  {{$porcentaje}}%"></div>
+             <div class="progress-bar" style="width:  {{round($porcentaje)}}%"></div>
            </div>
                <span class="progress-description">
-                 {{$porcentaje}}% Porcentaje
+                 {{round($porcentaje)}}% Porcentaje
                </span>
          </div>
          <!-- /.info-box-content -->
@@ -46,8 +46,8 @@
         <span class="info-box-icon bg-orange"><i class="fa fa-flag-o"></i></span>
 
         <div class="info-box-content">
-          <span class="info-box-text">Ganancia total</span>
-          <span class="info-box-number">{{ number_format($ganancia, 0, '', '.')}}</span>
+          <span class="info-box-text">Ganancia {{$carbon->format('M')}}</span>
+          <span class="info-box-number">{{ number_format($ganancia, 0, '', '.')}}</span> <a href="{{ url('prestamo/consulta') }}">Ver todo</a>
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -112,6 +112,7 @@
 	 			<!-- /.box -->
 	 		</div>
 	 	</div>
+		{{ $atrasadas->links() }}
 
 		<div class="row">
  	 		<div class="col-xs-12">
@@ -125,7 +126,7 @@
  	 					<table class="table table-hover">
  	 						<tr>
  	 							<th>#</th>
- 	 							<th>Clienta</th>
+ 	 							<th>Cliente</th>
  	 							<th>Valor a pagar</th>
  	 							<th>Estado</th>
  	 							<th>Pagar</th>
@@ -152,6 +153,6 @@
  	 			<!-- /.box -->
  	 		</div>
  	 	</div>
-
+{{ $pagoHoy->links() }}
 
 @endsection

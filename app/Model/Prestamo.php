@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Prestamo extends Model
 {
+  public function presupuesto()
+  {
+       return $this->belongsTo('App\Model\Presupuesto','presupuesto_id');
+  }
+
   public function cliente()
   {
        return $this->belongsTo('App\Model\Cliente','cliente_id');
@@ -32,7 +37,14 @@ class Prestamo extends Model
     return $dato;
   }
 
-  public static function ganancia()
+  public static function ganancia($mes, $ano)
+  {
+    $dato = \DB::select('select SUM(ganancia) as ganancia from prestamos where MONTH(fecha) = :MES AND YEAR(fecha) = :ANO', ['MES' => $mes, 'ANO' => $ano]);
+    $dato = $dato[0]->ganancia;
+    return $dato;
+  }
+
+  public static function gananciaTotal()
   {
     $dato = Prestamo::sum('ganancia');
     return $dato;

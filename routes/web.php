@@ -30,5 +30,9 @@ Route::group(['middleware' => 'auth'], function () {
   Route::resource('cuotas', 'CuotaController');
   Route::post('prestamos/{id}', 'PrestamoController@store');
   Route::get('prestamos/create/{id}', 'PrestamoController@create');
+  Route::get('prestamo/consulta', 'PrestamoController@consultaMesindex');
+  Route::post('prestamo/consulta', 'PrestamoController@consultaMes');
+  Route::post('clientes/buscar', 'ClienteController@buscar');
+
 
 });

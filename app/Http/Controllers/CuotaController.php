@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Cuota;
 use App\Model\Prestamo;
+use App\Model\Presupuesto;
 use Illuminate\Http\Request;
 
 
@@ -48,6 +49,7 @@ class CuotaController extends Controller
      */
     public function show($id)
     {
+      Cuota::generarAtrasos();
       $prestamo = Prestamo::find($id);
       $coutas = Cuota::where('prestamo_id',$id)->get();
       return view('cuota.show', compact('prestamo'), ['coutas' => $coutas ]);
@@ -80,6 +82,7 @@ class CuotaController extends Controller
         ]);
 
         Cuota::generarCuota($request, $cuota);
+        Presupuesto::cargarPresupuesto($cuota->prestamo->presupuesto_id, $request->valor_cancelado);
 
         session()->flash('message', 'Guardado correctamente');
         return redirect('cuotas/'.$cuota->prestamo_id);

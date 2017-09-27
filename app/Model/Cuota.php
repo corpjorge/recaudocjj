@@ -160,13 +160,13 @@ class Cuota extends Model
 
    public static function atrasadasTotal()
    {
-     $atrasadas = Cuota::where('estado_id','=',4)->orderBy('id', 'desc')->get();
+     $atrasadas = Cuota::where('estado_id','=',4)->orderBy('id', 'desc')->paginate(30);
      return $atrasadas;
    }
 
    public static function pagosHoy($hoy)
    {
-     $pagoHoy = Cuota::where('fecha_cuota','=',$hoy)->where('estado_id','=',3)->orderBy('id', 'desc')->get();
+     $pagoHoy = Cuota::where('fecha_cuota','=',$hoy)->where('estado_id','=',3)->orderBy('id', 'desc')->paginate(30);
      return $pagoHoy;
    }
 

@@ -14,7 +14,7 @@ class PresupuestoController extends Controller
      */
     public function index()
     {
-      $datos = Presupuesto::orderBy('id', 'desc')->get();
+      $datos = Presupuesto::orderBy('id', 'desc')->paginate(30);
       return view('presupuesto.index',['datos' => $datos]);
     }
 

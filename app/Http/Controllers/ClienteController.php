@@ -16,8 +16,16 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $clientes = Cliente::orderBy('id', 'desc')->get();
+        $clientes = Cliente::orderBy('id', 'desc')->paginate(30);
         return view('cliente.index',['clientes' => $clientes]);
+    }
+
+
+    public function buscar(Request $request)
+    {
+        $clientes = Cliente::where('nombre','LIKE', '%'.$request->dato.'%')->paginate(30);
+        $limpiar = 1;
+        return view('cliente.index',compact('limpiar'),['clientes' => $clientes]);
     }
 
     /**

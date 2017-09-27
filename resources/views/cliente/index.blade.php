@@ -9,9 +9,16 @@
 
 	</section><br>
 
+
 	<a class="btn btn-app" href="{{ url('clientes/create')}}">
   	<i class="fa fa-plus"></i> Añadir
   </a>
+
+	@isset($limpiar)
+		<a class="btn btn-app" href="{{ url('clientes')}}">
+	  	<i class="fa fa-eraser"></i>Limpiar
+	  </a>
+	@endisset
 
 	@if (count($errors) > 0)
 			<div class="alert alert-danger">
@@ -30,15 +37,15 @@
         <div class="box">
           <div class="box-header">
             <h3 class="box-title">Tabla de clientes</h3>
-
             <div class="box-tools">
+							{!! Form::open(['url' => 'clientes/buscar']) !!}
               <div class="input-group input-group-sm" style="width: 150px;">
-                <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
+                <input type="text" name="dato" class="form-control pull-right" placeholder="Nombre">
                 <div class="input-group-btn">
-                  <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                  	<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                 </div>
               </div>
+							{!! Form::close() !!}
             </div>
           </div>
           <!-- /.box-header -->
@@ -67,6 +74,7 @@
         <!-- /.box -->
       </div>
     </div>
+		{{ $clientes->links() }}
 
 
 @endsection

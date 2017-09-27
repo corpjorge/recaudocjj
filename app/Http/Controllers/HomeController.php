@@ -28,14 +28,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $hoy = $carbon = Carbon::now();
-        $hoy = $hoy->format('Y-m-d');
+        Cuota::generarAtrasos();
+        $carbon = Carbon::now();
+        $hoy = $carbon->format('Y-m-d');
+        $ano = $carbon->format('Y');
+        $mes = $carbon->format('m');
+
         $presupuesSuma = Presupuesto::presupuesSuma();
         $porcentaje = Presupuesto::porcentaje();
         $atrasadas = Cuota::atrasadasTotal();
         $pagoHoy = Cuota::pagosHoy($hoy);
-        $ganancia = Prestamo::ganancia();
-        $entregado = Prestamo::entregado();
-        return view('home', compact('presupuesSuma', 'porcentaje','hoy','ganancia','entregado'), ['atrasadas' => $atrasadas, 'pagoHoy' => $pagoHoy]);
+        $ganancia = Prestamo::ganancia($mes, $ano);
+        $entregado = Prestamo::entregado();return view('home', compact('presupuesSuma', 'porcentaje','hoy','ganancia','entregado'), ['atrasadas' => $atrasadas, 'pagoHoy' => $pagoHoy]);
     }
 }

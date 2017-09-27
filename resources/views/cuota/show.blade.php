@@ -31,9 +31,36 @@
           <li><a href="#">Fecha del prestamo <span class="pull-right">{{$prestamo->fecha}}</span></a></li>
 					<li><a href="#">Cuotas <span class="pull-right    ">{{$prestamo->cuota}}</span></a></li>
           <li><a href="#">Interes <span class="pull-right    ">{{$prestamo->interes}}%</span></a></li>
+          <li><a href="#">Cancelar préstamo <span class="pull-right    "><button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-danger">
+                Eliminar
+              </button></span></a></li>
         </ul>
       </div>
     </div>
+
+    <div class="modal modal-danger fade" id="modal-danger">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Eliminar Préstamo</h4>
+              </div>
+              <div class="modal-body">
+                <p>Esta seguro que desea eliminar préstamo</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
+                {!! Form::open(['url' => 'prestamos/'.$prestamo->id, 'method' => 'delete']) !!}
+                  <button type="submit" class="btn btn-outline">Eliminar</button>
+                {!! Form::close() !!}
+
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
 
 
 		@if(session()->has('message'))
@@ -51,15 +78,7 @@
 					<div class="box-header">
 						<h3 class="box-title">Cuotas</h3>
 
-						<div class="box-tools">
-							<div class="input-group input-group-sm" style="width: 150px;">
-								<input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
 
-								<div class="input-group-btn">
-									<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-								</div>
-							</div>
-						</div>
 					</div>
 					<!-- /.box-header -->
 					<div class="box-body table-responsive no-padding">

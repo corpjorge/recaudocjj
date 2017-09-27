@@ -29,6 +29,20 @@ class Presupuesto extends Model
 
   }
 
+  public static function cargarPresupuesto($id, $valor)
+  {
+    $dato = Presupuesto::find($id);
+    $dato->valor_actual = $dato->valor_actual+$valor;
+
+    $porcentaje = ($dato->valor_actual*100)/$dato->valor_inicial;
+    $porcentaje = round($porcentaje);
+
+    $dato->porcentaje = $porcentaje;
+
+    $dato->save();
+  }
+
+
 
 
 

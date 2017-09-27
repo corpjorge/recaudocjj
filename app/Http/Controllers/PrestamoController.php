@@ -20,7 +20,7 @@ class PrestamoController extends Controller
      */
     public function index()
     {
-        $prestamos = Prestamo::orderBy('id', 'desc')->get();
+        $prestamos = Prestamo::orderBy('id', 'desc')->paginate(30);
         return view('prestamo.index',['prestamos' => $prestamos]);
     }
 
@@ -63,7 +63,7 @@ class PrestamoController extends Controller
           $ganancia = ($request->interes*$request->prestamo)/100;
           $entregado = $request->prestamo-$ganancia;
 
-          $valor_actual = $presupuesto->valor_actual-$entregado;
+          $valor_actual = $presupuesto->valor_actual-$request->prestamo;
           $porcentaje = ($valor_actual*100)/$presupuesto->valor_inicial;
           $porcentaje = round($porcentaje);
           $cuota_valor = $request->prestamo/$request->cuota;
@@ -120,6 +120,35 @@ class PrestamoController extends Controller
       return view('prestamo.show', compact('cliente'), ['prestamos' => $prestamos ]);
     }
 
+    public function consultaMesindex()
+    {
+      $total = Prestamo::gananciaTotal();
+      return view('prestamo.consulta',compact('total'));
+    }
+
+    public function consultaMes(Request $request)
+    {
+      $this->Validate($request,[
+          'mes' => 'required|',
+          'ano' => 'required|',
+      ]);
+
+      $ganancia = Prestamo::ganancia($request->mes, $request->ano);
+
+      if ($ganancia) {
+        $total = Prestamo::gananciaTotal();
+        $mes = $request->mes;
+        $ano = $request->ano;
+        return view('prestamo.consulta',compact('total', 'ganancia','mes','ano'));
+
+      }else{
+        session()->flash('message', 'Fecha no se encuentra');
+        return redirect('prestamo/consulta');
+      }
+
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -151,6 +180,17 @@ class PrestamoController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $cuotas = Cuota::where('prestamo_id',$id);
+      $cuotas->delete();
+
+      $prestamo = Prestamo::find($id);
+
+      Presupuesto::cargarPresupuesto($prestamo->presupuesto->id, $prestamo->saldo);
+
+      $prestamo->delete();
+
+      session()->flash('message', 'Préstamo borrado correctamente');
+      return redirect('prestamos');
+
     }
 }
