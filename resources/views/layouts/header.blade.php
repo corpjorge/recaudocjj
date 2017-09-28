@@ -94,7 +94,11 @@ function current_page($url = '/'){
                 <!-- Menu Footer-->
                 <li class="user-footer">
                   <div class="pull-left">
-                    {{-- <a href="#" class="btn btn-default btn-flat">Profile</a> --}}
+                    @if (Auth::user()->rol_id == 1)
+                     <a href="{{ url('rol/2')}}" class="btn btn-default btn-flat">Admin</a> 
+                    @else 
+                     <a href="{{ url('rol/1')}}" class="btn btn-default btn-flat">Super Admin</a> 
+                    @endif 
                   </div>
                   <div class="pull-right">
                     <a href="#" class="btn btn-default btn-flat" id="logout"

@@ -25,6 +25,8 @@ Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallb
 Route::group(['middleware' => 'auth'], function () {
 
   Route::resource('presupuestos', 'PresupuestoController');
+  Route::get('presupuesto/{id}/edit', 'PresupuestoController@editar');
+  Route::post('presupuesto/{id}', 'PresupuestoController@actualizar');
   Route::resource('prestamos', 'PrestamoController');
   Route::resource('clientes', 'ClienteController');
   Route::resource('cuotas', 'CuotaController');
@@ -33,6 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('prestamo/consulta', 'PrestamoController@consultaMesindex');
   Route::post('prestamo/consulta', 'PrestamoController@consultaMes');
   Route::post('clientes/buscar', 'ClienteController@buscar');
+  Route::get('rol/{id}', 'HomeController@rol');
 
 
 });

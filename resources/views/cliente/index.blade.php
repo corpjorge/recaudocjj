@@ -57,6 +57,9 @@
                 <th>Nombre</th>
                 <th>Prestamos</th>
                 <th>Prestar</th>
+                @if (Auth::user()->rol_id == 1)
+                <th><i class="fa fa-pencil" aria-hidden="true"></i></th>
+                @endif
               </tr>
 							@foreach ($clientes as $cliente)
               <tr>
@@ -65,6 +68,9 @@
                 <td>{{$cliente->nombre}}</td>
                 <td><a href="{{ url('prestamos/'.$cliente->id)}}"><i class="fa fa-search" aria-hidden="true"></i> Ver</a></td>
                 <td><a href="{{ url('prestamos/create/'.$cliente->id)}}"><i class="fa fa-money" aria-hidden="true"></i> Prestar</a></td>
+                @if (Auth::user()->rol_id == 1)
+                <th><a href="{{ url('clientes/'.$cliente->id.'/edit')}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></th>
+                @endif
               </tr>
 							@endforeach
             </table>

@@ -102,10 +102,53 @@ class PresupuestoController extends Controller
 
       session()->flash('message', 'Guardado correctamente');
       return redirect('presupuestos');
-
-
-
     }
+
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Presupuesto  $presupuesto
+     * @return \Illuminate\Http\Response
+     */
+    public function editar($id)
+    {
+        $presupuesto = Presupuesto::find($id);
+        return view('presupuesto.edit', compact('presupuesto'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Presupuesto  $presupuesto
+     * @return \Illuminate\Http\Response
+     */
+    public function actualizar(Request $request, $id)
+    {
+      
+      $this->Validate($request,[
+          'nombre' => 'required',
+          'valor_inicial' => 'required|numeric|min:1|',
+          'valor_actual' => 'required|numeric|min:1|',
+          'porcentaje' => 'required|numeric|min:1|'
+      ]);     
+
+      $dato = Presupuesto::find($id);     
+
+      $dato->nombre  = $request->nombre;
+      $dato->valor_inicial = $request->valor_inicial;
+      $dato->valor_actual = $request->valor_actual;
+      $dato->porcentaje = $request->porcentaje;
+      $dato->save();
+
+      session()->flash('message', 'Guardado correctamente');
+      return redirect('presupuesto/'.$dato->id.'/edit');
+       
+    }
+
+
+
 
     /**
      * Remove the specified resource from storage.

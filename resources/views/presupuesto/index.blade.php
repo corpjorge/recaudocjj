@@ -39,6 +39,9 @@
 								<th>Valor Actual</th>
 								<th>Estado</th>
 								<th>Agregar</th>
+								@if (Auth::user()->rol_id == 1)
+								<th><i class="fa fa-pencil" aria-hidden="true"></i></th>
+								@endif
 							</tr>
 							@foreach ($datos as $dato)
 							<tr>
@@ -65,6 +68,9 @@
 										</div>
 									@endif
 								<td><a href="{{ url('presupuestos/'.$dato->id.'/edit')}}"><i class="fa fa-plus" aria-hidden="true"></i> Agregar</a></td>
+								@if (Auth::user()->rol_id == 1)
+								<th><a href="{{ url('presupuesto/'.$dato->id.'/edit')}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></th>
+								@endif
 
 							</tr>
 							@endforeach

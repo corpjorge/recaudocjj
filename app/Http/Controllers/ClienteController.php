@@ -79,7 +79,8 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cliente = Cliente::find($id);     
+        return view('cliente.edit', compact('cliente'));
     }
 
     /**
@@ -91,7 +92,17 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->Validate($request,[
+            'codigo' => 'required|numeric|min:1|unique:clientes',
+            'nombre' => 'required|',
+        ]);
+
+        $cliente = Cliente::find($id);
+        $cliente->codigo  = $request->codigo;
+        $cliente->nombre = $request->nombre;
+        $cliente->save();
+        session()->flash('message', 'Guardado correctamente');
+        return redirect('clientes/'.$cliente->id.'/edit');
     }
 
     /**

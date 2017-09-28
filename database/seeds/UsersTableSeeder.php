@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
       $user->name = "Juan Carlos";
       $user->email="instelbo@gmail.com";
       $user->password= crypt("111111","");
-      $user->rol_id=1;
+      $user->rol_id=2;
       $user->save();
 
     }

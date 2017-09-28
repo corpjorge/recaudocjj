@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Model\Cuota;
 use App\Model\Presupuesto;
 use App\Model\Prestamo;
+use App\User;
 
+use Auth;
 use Carbon\Carbon;
 
 class HomeController extends Controller
@@ -40,5 +42,14 @@ class HomeController extends Controller
         $pagoHoy = Cuota::pagosHoy($hoy);
         $ganancia = Prestamo::ganancia($mes, $ano);
         $entregado = Prestamo::entregado();return view('home', compact('presupuesSuma', 'porcentaje','hoy','ganancia','entregado'), ['atrasadas' => $atrasadas, 'pagoHoy' => $pagoHoy]);
+    }
+
+
+    public function rol($id)
+    {
+        $user = User::find(Auth::user()->id);
+        $user->rol_id = $id;
+        $user->save();
+        return back()->withInput();        
     }
 }
