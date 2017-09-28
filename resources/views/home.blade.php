@@ -53,7 +53,7 @@
       </div>
       <!-- /.info-box -->
     </div>
-
+{{--
 		<div class="col-md-3 col-sm-6 col-xs-12">
 		 <div class="info-box">
 			 <span class="info-box-icon bg-black"><i class="fa fa-money"></i></span>
@@ -65,8 +65,8 @@
 			 <!-- /.info-box-content -->
 		 </div>
 		 <!-- /.info-box -->
-	 </div>
-
+	 </div> 
+--}}
 
    </div>
 

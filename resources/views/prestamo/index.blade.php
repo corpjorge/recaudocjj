@@ -16,8 +16,29 @@
 						 {{session()->get('message')}}
 					 </div>
 	@endif
+{{--
+<div class="col-md-3">
+	<div class="box">   
+	 {!! Form::open(['url' => 'prestamo/buscar']) !!}         
+	    <div class="box-body">
+	      <p>Buscar</p>
+	      <div class="input-group margin">
+	        <input type="number" class="form-control" placeholder="Inicio" min="1" name="inicio" required="">	         
+	            <span class="input-group-btn">	             
+	            </span>
+	        <input type="number" class="form-control" placeholder="Fin" min="1" name="fin" required="">	         
+	            <span class="input-group-btn">
+	              <button type="submit" class="btn btn-info btn-flat">Go!</button>
+	            </span>
+	      </div>
+	      <!-- /input-group -->
+	    </div>
 
-
+	    {!! Form::close() !!}
+	    <!-- /.box-body -->
+	  </div>
+</div>
+--}}
 	<div class="row">
 			<div class="col-xs-12">
 				<div class="box">

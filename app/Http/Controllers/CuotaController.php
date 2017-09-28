@@ -17,7 +17,8 @@ class CuotaController extends Controller
      */
     public function index()
     {
-        //
+         $cuotas = Cuota::where('estado_id','!=','2')->get(); 
+         return view('cuota.index',['cuotas' => $cuotas]);
     }
 
     /**
