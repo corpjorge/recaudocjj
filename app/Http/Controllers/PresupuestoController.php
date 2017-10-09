@@ -129,9 +129,9 @@ class PresupuestoController extends Controller
       
       $this->Validate($request,[
           'nombre' => 'required',
-          'valor_inicial' => 'required|numeric|min:1|',
-          'valor_actual' => 'required|numeric|min:1|',
-          'porcentaje' => 'required|numeric|min:1|'
+          'valor_inicial' => 'required|numeric|',
+          'valor_actual' => 'required|numeric|',
+          'porcentaje' => 'required|numeric|'
       ]);     
 
       $dato = Presupuesto::find($id);     

@@ -45,15 +45,15 @@
 				</div>
 				<div class="form-group">
 					<label for="valor_inicial">Valor inicial</label>
-					<input type="number" class="form-control" id="valor_inicial" placeholder="$" name="valor_inicial" min="1" value="{{$presupuesto->valor_inicial}}">
+					<input type="number" class="form-control" id="valor_inicial" placeholder="$" name="valor_inicial" min="0" value="{{$presupuesto->valor_inicial}}">
 				</div>
 				<div class="form-group">
 					<label for="valor_actual">Valor actual</label>
-					<input type="number" class="form-control" id="valor_actual" placeholder="$" name="valor_actual" min="1" value="{{$presupuesto->valor_actual}}">
+					<input type="number" class="form-control" id="valor_actual" placeholder="$" name="valor_actual" min="0" value="{{$presupuesto->valor_actual}}">
 				</div>
 				<div class="form-group">
 					<label for="porcentaje">Porcentaje</label>
-					<input type="number" class="form-control" id="porcentaje" placeholder="%" name="porcentaje" min="1" value="{{$presupuesto->porcentaje}}">
+					<input type="number" class="form-control" id="porcentaje" placeholder="%" name="porcentaje" min="0" value="{{$presupuesto->porcentaje}}">
 				</div>
 			</div>
 
