@@ -77,7 +77,7 @@
 
     <div class="social-auth-links text-center">
       <p>- O -</p>
-      <a href="{{ url('/auth/facebook') }}" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Continuar con Facebook</a>
+     <!-- <a href="{{ url('/auth/facebook') }}" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Continuar con Facebook</a>-->
     </div>
     <!-- /.social-auth-links -->
 

@@ -24,6 +24,7 @@
       </div>
       <div class="box-footer no-padding">
         <ul class="nav nav-stacked">
+					<li><a href="#">Presupuesto <span class="pull-right  ">{{ $prestamo->presupuesto->id.': '.$prestamo->presupuesto->nombre}}</span></a></li>
           <li><a href="#">Prestamo <span class="pull-right  ">{{ number_format($prestamo->prestamo, 0, '', '.') }}</span></a></li>
           <li><a href="#">Saldo Total <span class="pull-right ">{{ number_format($prestamo->saldo, 0, '', '.')}}</span></a></li>
           <li><a href="#">Ganancia <span class="pull-right ">{{ number_format($prestamo->ganancia, 0, '', '.')}}</span></a></li>
