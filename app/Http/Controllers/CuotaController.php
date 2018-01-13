@@ -52,7 +52,7 @@ class CuotaController extends Controller
     {
       Cuota::generarAtrasos();
       $prestamo = Prestamo::find($id);
-      $coutas = Cuota::where('prestamo_id',$id)->get();
+      $coutas = Cuota::where('prestamo_id',$id)->orderBy('cuota', 'desc')->get();
       return view('cuota.show', compact('prestamo'), ['coutas' => $coutas ]);
     }
 
