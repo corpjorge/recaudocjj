@@ -74,7 +74,7 @@
 	 		<div class="col-xs-12">
 	 			<div class="box">
 	 				<div class="box-header">
-	 					<h3 class="box-title">Atrazados</h3>
+	 					<h3 class="box-title"><span class="label label-danger">Atrasados</span></h3>
 
 
 	 				</div>
@@ -86,7 +86,8 @@
 	 							<th>Clienta</th>
 	 							<th>Valor a pagar</th>
 	 							<th>Fecha pago</th>
-	 							<th>Estado</th>
+	 							<th>Dias</th>
+	 							<th>Obs</th>
 	 							<th>Pagar</th>
 	 						</tr>
 	 						@foreach ($atrasadas as $atrasada)
@@ -95,7 +96,16 @@
 	 							<td>{{$atrasada->prestamo->cliente->nombre}}</td>
 	 							<td>{{number_format($atrasada->valor_couta, 0, '', '.') }}</td>
 	 							<td>{{$atrasada->fecha_cuota}}</td>
-	 							<td><span class="label label-{{$atrasada->estado->estilo}}">{{$atrasada->estado->nombre}}</span></td>
+	 							<td>
+	 								<?php
+
+	 								$fecha = Carbon\Carbon::parse($atrasada->fecha_cuota);      							
+ 									$dtVancouver = Carbon\Carbon::now();
+									echo $fecha->diffInDays($dtVancouver); 
+ 
+	 								?>	 								
+	 							</td>
+	 							<td>{{$atrasada->prestamo->observaciones}}</td>
 	 							<td>
 	 								@if ($atrasada->estado->id != 2)
 	 									<a href="{{ url('cuotas/'.$atrasada->id.'/edit')}}"><i class="fa fa-money" aria-hidden="true"></i> Pagar</a>
