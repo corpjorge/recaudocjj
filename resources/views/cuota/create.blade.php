@@ -21,7 +21,10 @@
 
 	<div class="box box-primary">
     <div class="box-header with-border">
-      <h3 class="box-title">Agregar Cliente</h3>
+      <h3 class="box-title">Pagar Cuota</h3>
+    </div>
+    <div class="overlay" id="carga" style="display:none;">
+      <i class="fa fa-refresh fa-spin"></i>
     </div>
     <!-- /.box-header -->
     <!-- form start -->
@@ -40,12 +43,29 @@
       </div>
       <!-- /.box-body -->
       <div class="box-footer">
-				<button type="submit" class="btn btn-primary">Pagar cuota</button>
+				<button type="submit" class="btn btn-primary" id="pagar_cuota" >Pagar cuota</button>
 				<a href="javascript:history.back()"  class="btn btn-default">Cancelar</a>
       </div>
     </div>
 		{!! Form::close() !!}
   </div>
+ 
 
+
+
+ 
+<script>
+$(function(){
+ $("#pagar_cuota").click(function(){
+
+   valor_cancelado    = $("#valor_cancelado").val();
+   fecha_pago   = $("#fecha_pago").val();
+
+   if (valor_cancelado && fecha_pago) {
+     $("#carga").show();
+   }
+ });
+});
+</script>
 
 @endsection
