@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Presupuesto;
+use App\Model\Prestamo;
 use Illuminate\Http\Request;
 
 class PresupuestoController extends Controller
@@ -145,6 +146,13 @@ class PresupuestoController extends Controller
       session()->flash('message', 'Guardado correctamente');
       return redirect('presupuesto/'.$dato->id.'/edit');
        
+    }
+
+ 
+    public function detalles($presupuesto)
+    {
+        $rows = Prestamo::where('presupuesto_id',$presupuesto)->orderBy('cliente_id')->get();
+        return view('presupuesto.detalles', [ 'rows' => $rows]);
     }
 
 

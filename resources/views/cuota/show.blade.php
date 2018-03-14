@@ -90,6 +90,7 @@
 								<th>Valor a pagar</th>
 								<th>Fecha pago realizado</th>
 								<th>Valor pagado</th>
+								<th>Obs</th>
 								<th>Estado</th>
 								<th>Pagar</th>
 							</tr>
@@ -97,7 +98,7 @@
 							<tr>
 								<td>{{$couta->cuota}}</td>
 								<td>{{$couta->fecha_cuota}}</td>
-								<td>{{number_format($couta->valor_couta, 0, '', '.') }}</td>
+								<td>{{number_format($couta->valor_couta, 0, '', '.') }}</td>								
 								<td>
 									@if ($couta->fecha_pago != null)
 										{{$couta->fecha_pago}}
@@ -112,6 +113,7 @@
 										0
 									@endif
 								</td>
+								<td>{{$couta->observaciones }}</td>
 								<td><span class="label label-{{$couta->estado->estilo}}">{{$couta->estado->nombre}}</span></td>
 								<td>
 									@if ($couta->estado->id != 2)

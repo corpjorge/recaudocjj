@@ -39,6 +39,10 @@
           <label for="nombre">Fecha</label>
           <input type="date" class="form-control" id="fecha_pago" name="fecha_pago">
         </div>
+        <div class="form-group">
+          <label for="observaciones">Observaciones</label>
+          <input type="text" class="form-control" id="observaciones"   name="observaciones" >
+        </div>
 
       </div>
       <!-- /.box-body -->

@@ -21,6 +21,7 @@ function current_page($url = '/'){
             <li <?php echo current_page('clientes') ? "class='active'" : "";?>><a href="{{ url('clientes')}}">Clientes <span class="sr-only">(current)</span></a></li>
             <li <?php echo current_page('prestamos') ? "class='active'" : "";?>><a href="{{ url('prestamos')}}">Prestamos <span class="sr-only">(current)</span></a></li>
             <li <?php echo current_page('cuotas') ? "class='active'" : "";?>><a href="{{ url('cuotas')}}">Cuotas <span class="sr-only">(current)</span></a></li>
+            <li <?php echo current_page('calendario') ? "class='active'" : "";?>><a href="{{ url('calendario')}}">Calendario <span class="sr-only">(current)</span></a></li>
 
             {{-- <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>

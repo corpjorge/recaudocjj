@@ -31,6 +31,7 @@ class Cuota extends Model
     $dato = Cuota::find($cuota);
     $dato->fecha_pago  = $request->fecha_pago;
     $dato->valor_cancelado = $request->valor_cancelado;
+    $dato->observaciones = $request->observaciones;
     $dato->estado_id = 2;
     $dato->save();
     $cuotaGuardada = $dato;

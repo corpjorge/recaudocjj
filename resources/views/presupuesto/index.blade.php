@@ -39,6 +39,7 @@
 								<th>Valor Actual</th>
 								<th>Estado</th>
 								<th>Agregar</th>
+								<th><i class="fa fa-eye" aria-hidden="true"></i></th>								
 								@if (Auth::user()->rol_id == 1)
 								<th><i class="fa fa-pencil" aria-hidden="true"></i></th>
 								@endif
@@ -66,8 +67,13 @@
 										<div class="progress progress-xs">
 											<div class="progress-bar progress-bar-danger" style="width: {{$dato->porcentaje}}%"></div>
 										</div>
+									@elseif ($dato->porcentaje <30)
+										<div class="progress progress-xs">
+											<div class="progress-bar progress-bar-danger" style="width: {{$dato->porcentaje}}%"></div>
+										</div>	
 									@endif
 								<td><a href="{{ url('presupuestos/'.$dato->id.'/edit')}}"><i class="fa fa-plus" aria-hidden="true"></i> Agregar</a></td>
+								<th><a href="{{ url('presupuesto-show/'.$dato->id)}}"><i class="fa fa-eye" aria-hidden="true"></i></a></th>
 								@if (Auth::user()->rol_id == 1)
 								<th><a href="{{ url('presupuesto/'.$dato->id.'/edit')}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></th>
 								@endif

@@ -7,6 +7,8 @@ use App\Model\Prestamo;
 use App\Model\Presupuesto;
 use Illuminate\Http\Request;
 
+use Carbon\Carbon;
+
 
 class CuotaController extends Controller
 {
@@ -80,6 +82,7 @@ class CuotaController extends Controller
         $this->Validate($request,[
             'fecha_pago' => 'required|date',
             'valor_cancelado' => 'required|numeric|min:1|',
+            'observaciones' => 'required|',
         ]);
 
         Cuota::generarCuota($request, $cuota);
@@ -88,6 +91,26 @@ class CuotaController extends Controller
         session()->flash('message', 'Guardado correctamente');
         return redirect('cuotas/'.$cuota->prestamo_id);
 
+    }
+
+
+    public function filtrar(Request $request)
+    {
+        $this->Validate($request,[
+            'fecha' => 'required|',
+        ]);
+
+        list($incio, $final) = explode("-", $request->fecha);
+
+        $incio = Carbon::parse($incio);
+        $incio = $incio->format('Y-m-d');
+
+        $final = Carbon::parse($final);
+        $final = $final->format('Y-m-d');
+         
+        $cuotas = Cuota::where('estado_id','!=','2')->where('fecha_cuota','>=',$incio)->where('fecha_cuota','<=',$final)->orderBy('fecha_cuota','asc')->get(); 
+        return view('cuota.index',['cuotas' => $cuotas]);
+        
     }
 
 

@@ -27,15 +27,18 @@ Route::group(['middleware' => 'auth'], function () {
   Route::resource('presupuestos', 'PresupuestoController');
   Route::get('presupuesto/{id}/edit', 'PresupuestoController@editar');
   Route::post('presupuesto/{id}', 'PresupuestoController@actualizar');
+  Route::get('presupuesto-show/{id}', 'PresupuestoController@detalles');
   Route::resource('prestamos', 'PrestamoController');
   Route::resource('clientes', 'ClienteController');
   Route::resource('cuotas', 'CuotaController');
+  Route::post('cuotas-filtrar', 'CuotaController@filtrar');
   Route::post('prestamos/{id}', 'PrestamoController@store');
   Route::get('prestamos/create/{id}', 'PrestamoController@create');
   Route::get('prestamo/consulta', 'PrestamoController@consultaMesindex');
   Route::post('prestamo/consulta', 'PrestamoController@consultaMes');
   Route::post('clientes/buscar', 'ClienteController@buscar');
   Route::get('rol/{id}', 'HomeController@rol');
+  Route::resource('calendario', 'CalendarioController');
 
 
 });
