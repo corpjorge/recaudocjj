@@ -1,1 +1,1 @@
-<p>RecuadoCJJ<p>
+<p>RecuadoCJJ obsoleto<p>
